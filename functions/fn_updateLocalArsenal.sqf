@@ -78,8 +78,7 @@ _action = _obj addaction [
 	{
 		_box = _this select 0;
 		_unit = _this select 1;
-		[_box, _unit, true] call ace_arsenal_fnc_openBox;
-		// ["Open",[nil,_box]] call bis_fnc_arsenal;
+		["Open",[nil,_box]] call bis_fnc_arsenal;
 	},
 	[],
 	6,
