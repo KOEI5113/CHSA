@@ -5,8 +5,8 @@ _specItems = _obj getVariable ["CHSA_specItems", []];
 _itemsArray = _specItems select _specIndex;
 
 // ACE 軍火庫相關，如果不需要使用 ACE 軍火庫再移除此兩條程式碼
-[_obj] call ace_arsenal_fnc_removeBox; // 移除 ACE 軍火庫 - 當要更新軍火庫前，先強制移除既有 ACE 軍火庫以防萬一
-[_obj, _itemsArray] call ace_arsenal_fnc_initBox; // 以指定白名單添增 ACE 軍火庫
+[player, true] call ace_arsenal_fnc_removeVirtualItems; // 移除 ACE 軍火庫 - 當要更新軍火庫前，先強制移除既有 ACE 軍火庫以防萬一
+[player, _itemsArray] call ace_arsenal_fnc_addVirtualItems; // 以指定白名單添增 ACE 軍火庫
 
 // 仍然維持原廠軍火庫邏輯，藉此達成同時共用原廠軍火庫與 ACE 軍火庫的方式
 [_obj, [_obj] call BIS_fnc_getVirtualBackpackCargo] call BIS_fnc_removeVirtualBackpackCargo;
@@ -19,6 +19,7 @@ _itemsArray = _specItems select _specIndex;
 [_obj, _itemsArray] call BIS_fnc_addVirtualMagazineCargo; 
 [_obj, _itemsArray] call BIS_fnc_addVirtualWeaponCargo;
 
+_obj removeAction (_obj getVariable ["marshall_ace_arsenal_action", 0]);
 _obj removeAction (_obj getVariable ["bis_fnc_arsenal_action", 0]);
 
 _allItems = [];
@@ -71,6 +72,24 @@ _restrictedItems = _allItems - _itemsArray;
 		};
 	};
 } forEach _restrictedItems;
+
+// 對箱子添增 ACE 滾輪
+_action = _obj addaction [
+	("<img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='64' height='64' /> ACE 軍火庫"),
+	{
+		_unit = _this select 1;
+		[_unit, _unit] call ace_arsenal_fnc_openBox; 
+	},
+	[],
+	6,
+	true,
+	false,
+	"",
+	"
+		alive _target && {_target distance _this < 8}
+	"
+];
+_obj setVariable ["marshall_ace_arsenal_action", _action];
 
 // 仍然維持原廠軍火庫邏輯，藉此達成同時共用原廠軍火庫與 ACE 軍火庫的方式
 _action = _obj addaction [
