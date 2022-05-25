@@ -49,6 +49,8 @@ _generalItems = [
 "ACE_SpraypaintGreen",
 "ACE_SpraypaintRed",
 "rhs_1PN138",
+"vme_camonet_med_FOR",
+"vme_camonet_FOR",
 "hgun_Rook40_F",
 "G_Tactical_Clear",
 "G_Tactical_Black",
