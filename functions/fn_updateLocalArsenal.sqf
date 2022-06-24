@@ -6,7 +6,7 @@ _itemsArray = _specItems select _specIndex;
 
 // ACE 軍火庫相關，如果不需要使用 ACE 軍火庫再移除此兩條程式碼
 [player, true] call ace_arsenal_fnc_removeVirtualItems; // 移除 ACE 軍火庫 - 當要更新軍火庫前，先強制移除既有 ACE 軍火庫以防萬一
-[player, _itemsArray] call ace_arsenal_fnc_addVirtualItems; // 以指定白名單添增 ACE 軍火庫
+_obj setVariable ["marshall_ace_arsenal_items", _itemsArray];
 
 // 仍然維持原廠軍火庫邏輯，藉此達成同時共用原廠軍火庫與 ACE 軍火庫的方式
 [_obj, [_obj] call BIS_fnc_getVirtualBackpackCargo] call BIS_fnc_removeVirtualBackpackCargo;
@@ -77,8 +77,12 @@ _restrictedItems = _allItems - _itemsArray;
 _action = _obj addaction [
 	("<img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='64' height='64' /> ACE 軍火庫"),
 	{
+		_box = _this select 0;
 		_unit = _this select 1;
-		[_unit, _unit] call ace_arsenal_fnc_openBox; 
+
+		[_box, true] call ace_arsenal_fnc_removeVirtualItems; // 移除 ACE 軍火庫 - 當要更新軍火庫前，先強制移除既有 ACE 軍火庫以防萬一
+		[_box, _box getVariable ["marshall_ace_arsenal_items", []]] call ace_arsenal_fnc_addVirtualItems; // 以指定白名單添增 ACE 軍火庫
+		[_box, _unit] call ace_arsenal_fnc_openBox; 
 	},
 	[],
 	6,
