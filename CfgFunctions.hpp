@@ -4,6 +4,7 @@ class CHSA
 	class script
 	{
 		file = "CHSA\functions";
+		class filterEquipments {};
 		class createLocalArsenal {};
 		class executeLocalArsenal {};
 		class onApply {};

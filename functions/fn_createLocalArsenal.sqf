@@ -7,7 +7,7 @@ _restrictionDistance = _array select 1;
 _specNames = _array select 2;
 _specSlots = _array select 3;
 _specTypes = _array select 4;
-_specItems = _array select 5;
+_specItems = [_array select 5] call CHSA_fnc_filterEquipments;
 
 _obj removeAction (_obj getVariable ["marshall_ace_arsenal_action", 0]);
 _obj removeAction (_obj getVariable ["bis_fnc_arsenal_action", 0]);
