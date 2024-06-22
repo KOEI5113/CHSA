@@ -3,7 +3,7 @@
 // 陣營基本道具（將會整合陣營共用道具）
 private _faction_general = [
 	"B_IR_Grenade"
-] + _general + _nightGoogles;
+] + _general + _nightGoogles + _IAA_CBRN;
 
 // 陣營基本制服（包含頭盔、背心、制服、背包）
 private _faction_uniform = [

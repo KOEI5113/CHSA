@@ -71,6 +71,28 @@ private _general = [
     "MiniGrenade"
 ];
 
+
+// Invade & Annex 模式所需的 CBRN 防護服
+private _IAA_CBRN = [
+    "U_B_CBRN_Suit_01_MTP_F",
+    "U_B_CBRN_Suit_01_Tropic_F",
+    "U_B_CBRN_Suit_01_Wdl_F",
+    "B_SCBA_01_F",
+    "B_CombinationUnitRespirator_01_F",
+    "G_AirPurifyingRespirator_02_black_F",
+    "G_AirPurifyingRespirator_02_olive_F",
+    "G_AirPurifyingRespirator_02_sand_F",
+    "G_AirPurifyingRespirator_01_F",
+    "G_AirPurifyingRespirator_01_nofilter_F",
+    "G_RegulatorMask_F",
+    "H_Shemag_olive",
+    "H_Shemag_olive_hs",
+    "H_ShemagOpen_khk",
+    "H_ShemagOpen_tan",
+    "G_Combat",
+    "G_Combat_Goggles_tna_F"
+];
+
 // 工程 / 破壞兵才能取用的道具
 private _engineer = [
     "DemoCharge_Remote_Mag",
