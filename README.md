@@ -14,6 +14,12 @@ class CfgFunctions
 {
     #include "CHSA\CfgFunctions.hpp"
 };
+
+// 若原本已經有 RscTitles，則不需要重複新增一個 RscTitles, 只需要確保 CHSA\CHSA_warning.hpp 有被引用即可
+class RscTitles
+{
+    #include "CHSA\CHSA_warning.hpp"
+};
 ```
 
 3. 在任務中放置任何一個物件，並在初始化指令欄中貼上以下腳本
