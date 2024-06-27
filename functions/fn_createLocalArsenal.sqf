@@ -10,7 +10,7 @@ _specTypes = _array select 4;
 _specItems = [_array select 5] call CHSA_fnc_filterEquipments;
 
 _obj removeAction (_obj getVariable ["marshall_ace_arsenal_action", 0]);
-_obj removeAction (_obj getVariable ["bis_fnc_arsenal_action", 0]);
+// _obj removeAction (_obj getVariable ["bis_fnc_arsenal_action", 0]);
 _obj removeAction (_obj getVariable ["CHSA_actionID", -1]);
 terminate (_obj getVariable ["CHSA_restrictionHandle", scriptNull]);
 

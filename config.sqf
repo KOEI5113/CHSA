@@ -22,58 +22,63 @@ private _specItems = [];
 	_specTypes pushBack (_x select 2);
 
 	// 根據每個職位設定每個人的裝備，並將裝備推入 _specItems
-	private _equipments = (
-		(_equipmentDataset getOrDefault ["general", []]) + 
-		(_equipmentDataset getOrDefault ["uniform", []]) +
-		(_equipmentDataset getOrDefault ["weapon", []])
-	);
+	private _equipments = [];
+	_equipments append (_equipmentDataset getOrDefault ["general", []]);
+	_equipments append (_equipmentDataset getOrDefault ["uniform", []]);
+	_equipments append (_equipmentDataset getOrDefault ["weapon", []]);
+
+	// 檢查看看 _soltDataset 是否有設定第四個參數，如果有，就代表是針對該職務特別設定的裝備
+	if (count _x > 3) then {
+		_equipments append (_x select 3);
+	};
+	
 	switch (_x select 0) do {
 		case "前線火炮觀察員": {
-			_equipments append (_equipmentDataset getOrDefault ["binocular"]);
-			_equipments append (_equipmentDataset getOrDefault ["grenadeLauncher"]);
-			_equipments append (_equipmentDataset getOrDefault ["uav"]);
+			_equipments append (_equipmentDataset getOrDefault ["binocular", []]);
+			_equipments append (_equipmentDataset getOrDefault ["grenadeLauncher", []]);
+			_equipments append (_equipmentDataset getOrDefault ["uav", []]);
 		};
 		case "醫護兵": {
-			_equipments append (_equipmentDataset getOrDefault ["medic"]);
+			_equipments append (_equipmentDataset getOrDefault ["medic", []]);
 		};
 		case "排長"; case "班長";  case "伍長":
 		{
-			_equipments append (_equipmentDataset getOrDefault ["binocular"]);
-			_equipments append (_equipmentDataset getOrDefault ["grenadeLauncher"]);
+			_equipments append (_equipmentDataset getOrDefault ["binocular", []]);
+			_equipments append (_equipmentDataset getOrDefault ["grenadeLauncher", []]);
 		};
 		
 		case "自動步槍兵": {
-			_equipments append (_equipmentDataset getOrDefault ["LMG_G"]);
-			_equipments append (_equipmentDataset getOrDefault ["LMG_A"]);
+			_equipments append (_equipmentDataset getOrDefault ["LMG_G", []]);
+			_equipments append (_equipmentDataset getOrDefault ["LMG_A", []]);
 		};
 		case "輔助助手": {
-			_equipments append (_equipmentDataset getOrDefault ["LMG_A"]);
-			_equipments append (_equipmentDataset getOrDefault ["HMG_A"]);
+			_equipments append (_equipmentDataset getOrDefault ["LMG_A", []]);
+			_equipments append (_equipmentDataset getOrDefault ["HMG_A", []]);
 		};
 		case "工程兵": {
-			_equipments append (_equipmentDataset getOrDefault ["engineer"]);
+			_equipments append (_equipmentDataset getOrDefault ["engineer", []]);
 		};
 		case "精準射手": {
-			_equipments append (_equipmentDataset getOrDefault ["sniper"]);
+			_equipments append (_equipmentDataset getOrDefault ["sniper", []]);
 		};
 		case "排用機槍兵": {
-			_equipments append (_equipmentDataset getOrDefault ["HMG_G"]);
-			_equipments append (_equipmentDataset getOrDefault ["HMG_A"]);
+			_equipments append (_equipmentDataset getOrDefault ["HMG_G", []]);
+			_equipments append (_equipmentDataset getOrDefault ["HMG_A", []]);
 		};
 		case "發射器專精兵": {
-			_equipments append (_equipmentDataset getOrDefault ["launchers"]);
+			_equipments append (_equipmentDataset getOrDefault ["launchers", []]);
 		};
 		case "火砲操作人員": {
-			_equipments append (_equipmentDataset getOrDefault ["artillery"]);
+			_equipments append (_equipmentDataset getOrDefault ["artillery", []]);
 		};
 		case "直升機組員": {
-			_equipments append (_equipmentDataset getOrDefault ["heli"]);
+			_equipments append (_equipmentDataset getOrDefault ["heli", []]);
 		};
 		case "機組員": {
-			_equipments append (_equipmentDataset getOrDefault ["crew"]);
+			_equipments append (_equipmentDataset getOrDefault ["crew", []]);
 		};
 		case "飛行員": {
-			_equipments append (_equipmentDataset getOrDefault ["jet"]);
+			_equipments append (_equipmentDataset getOrDefault ["jet", []]);
 		};
 	};
 	_specItems pushBack _equipments;
